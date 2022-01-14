@@ -8,13 +8,13 @@ namespace MyListProgram
         {
             Console.WriteLine("Hello World!");
             MyList myList = new MyList();
-            myList.AddBack(1);
-            myList.AddBack(2);
-            myList.AddBack(3);
-            myList.AddBack(4);
-            myList.AddBack(5);
-            myList.AddBack(6);
-            myList.AddBack(7);
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.Add(4);
+            myList.Add(5);
+            myList.Add(6);
+            myList.Add(7);
             myList.AddByIndex(20, 8);
             myList.AddFirst(15);
 

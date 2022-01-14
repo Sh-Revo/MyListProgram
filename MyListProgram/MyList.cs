@@ -10,50 +10,37 @@ namespace MyListProgram
     {
         private int[] _array;
         private const int defaultSize = 4;
+        private const double Increment = 1.33;
         private int _currentCount;
 
-        public int Length => _currentCount;
+        private int DefaultNewSize => (int)(_array.Length * Increment);
+        public int Count => _currentCount;
         public int Capacity => _array.Length;
-
-        public int this[int index]
-        {
-            get
-            {
-                if (index >= Length || index < 0)
-                {
-                    throw new ArgumentException();
-                }
-
-                return _array[index];
-            }
-        }
 
         public MyList()
         {
             _array = new int[defaultSize];
-            _currentCount = 0;
         }
 
-        public void AddBack(int element)
+        public void Add(int element)
         {
-            if (Capacity == Length)
+            if (Count == Capacity)
             {
-                //make resize
-                _array[_currentCount] = element;
-            }
-            else
-            {
-                int[] newArray = new int[(int)(_array.Length * 1.33)];
-                for (int i = 0; i < _array.Length; i++)
-                {
-                    newArray[i] = _array[i];
-                }
-
-                newArray[_currentCount] = element;
-                _array = newArray;
+                Resize(DefaultNewSize);
             }
 
-            ++_currentCount;
+            _array[_currentCount++] = element;
+        }
+
+        public void Resize(int newSize)
+        {
+            int[] newArray = new int[newSize];
+            for (int i = 0; i < _array.Length; i++)
+            {
+                newArray[i] = _array[i]; 
+            }
+
+            _array = newArray;
         }
 
         public void AddFirst(int element)
@@ -63,11 +50,11 @@ namespace MyListProgram
 
         public void AddByIndex(int element, int ind)
         {
-            if (ind > Length)
+            if (ind > Count)
             {
-                throw IndexOutOfRangeException ("Index bigger than size array");
+                throw IndexOutOfRangeException("Index bigger than size array");
             }
-            int[] newArray = new int[(int)(_array.Length * 1.33)];        
+            int[] newArray = new int[(int)(_array.Length * 1.33)];
             for (int i = 0; i < ind; i++)
             {
                 newArray[i] = _array[i];
@@ -82,15 +69,15 @@ namespace MyListProgram
             ++_currentCount;
         }
 
-        public void DeleteFromEnd()
-        {
+        //public void DeleteFromEnd()
+        //{
 
-        }
+        //}
 
-        public void DeleteByIndex()
-        {
+        //public void DeleteByIndex()
+        //{
 
-        }
+        //}
 
         private Exception IndexOutOfRangeException(string v)
         {
