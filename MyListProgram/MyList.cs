@@ -36,8 +36,9 @@ namespace MyListProgram
 
         public void AddBack(int element)
         {
-            if (Capacity > Length)
+            if (Capacity == Length)
             {
+                //make resize
                 _array[_currentCount] = element;
             }
             else
@@ -82,6 +83,11 @@ namespace MyListProgram
         }
 
         public void DeleteFromEnd()
+        {
+
+        }
+
+        public void DeleteByIndex()
         {
 
         }
