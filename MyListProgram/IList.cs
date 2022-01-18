@@ -10,6 +10,10 @@ namespace MyListProgram
     {
         void Add(int element);//to end
         void AddFront(int element);
-
+        void DeleteFromEnd();
+        void DeleteFromStart();
+        void DeleteByIndex();
+        void GetValueByIndex();
+        void GetIndexByFirstValue();
     }
 }
